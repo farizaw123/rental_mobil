@@ -21,7 +21,8 @@ return new class extends Migration
             $table->string('telp');
             $table->string('email');
             $table->date('tanggal_sewa');
-            $table->string('mobil_sewa');
+            $table->unsignedBigInteger('mobil_sewa');
+            $table->foreign('mobil_sewa')->references('id')->on('kendaraans');
             $table->datetime('pickup_time');
             $table->integer('harga');
             $table->string('order_code');

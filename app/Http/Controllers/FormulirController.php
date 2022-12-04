@@ -40,7 +40,7 @@ class FormulirController extends Controller
      */
     public function store(Request $request)
     {
-        $data_kendaraan = kendaraan::find($request->mobil_sewa);
+        $data_kendaraan = $request->mobil_sewa;
         $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersNumber = strlen($characters);
         $codeLength = 6;
@@ -67,7 +67,7 @@ class FormulirController extends Controller
             "tanggal_sewa" => $request->tanggal_sewa,
             "mobil_sewa" => $request->mobil_sewa,
             "pickup_time" => $request->pickup_time,
-            "harga" => $data_kendaraan->harga,
+            "harga" => kendaraan::where('id', $data_kendaraan)->value('harga'),
             "order_code" => $code,
         ]);
 

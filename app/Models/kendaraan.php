@@ -9,4 +9,9 @@ class kendaraan extends Model
 {
     use HasFactory;
     protected $fillable = ['nama', 'merk', 'seat', 'cc', 'warna', 'transmisi', 'tahun', 'harga', 'deskripsi'];
+    public function formulir()
+    {
+        return $this->hasMany(Formulir::class);
+    }
+
 }

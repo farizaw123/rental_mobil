@@ -28,7 +28,7 @@ Route::post('admin/login', [AdminController::class, 'login']);
 
 Route::middleware('auth:sanctum','abilities:user')->group(function(){
     Route::get('/formulir', [FormulirController::class, 'index']);
-    Route::post('/formulir', [FormulirController::class, 'store'])->middleware(['auth:sanctum','abilities:user']);
+    Route::post('/formulir', [FormulirController::class, 'store']);
     Route::get('/formulir/{id}', [FormulirController::class, 'show']);
     Route::post('user/logout', [AuthController::class, 'logout'])->middleware(['auth:sanctum','abilities:user']);
     Route::put('/formulir/history', [AuthController::class, 'getHistory'])->middleware(['auth:sanctum','abilities:user']);
@@ -38,11 +38,10 @@ Route::middleware('auth:sanctum','abilities:admin')->group(function(){
     Route::post('/kendaraan', [KendaraanController::class, 'store']);   
     Route::put('/kendaraan/{id}', [KendaraanController::class, 'update']);
     Route::delete('/kendaraan/{id}', [KendaraanController::class, 'destroy']);
-    Route::get('/formulir', [FormulirController::class, 'index']);
+    Route::get('/formulirs', [FormulirController::class, 'index']);
     Route::get('/formulirs/{id}', [FormulirController::class, 'show']);
-    Route::put('/formulir/{id}', [FormulirController::class, 'update']);
-    
-    Route::post('admin/logout', [AdminController::class, 'logout'])->middleware(['auth:sanctum','abilities:admin']);
+    Route::put('/formulirs/{id}', [FormulirController::class, 'update']);
+    Route::post('admin/logout', [AdminController::class, 'logout']);
 });
 
 
